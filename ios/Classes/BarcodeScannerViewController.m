@@ -103,7 +103,10 @@
 // 选择图片成功调用此方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"---begin---");
+    NSLog(@"%@", info);
     UIImage *image = info[UIImagePickerControllerOriginalImage];
+    NSLog(@"%@",image);
     NSString *qrCodeString = [self messageFromQRCodeImage:image];
     if (qrCodeString) {
         [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:qrCodeString];
