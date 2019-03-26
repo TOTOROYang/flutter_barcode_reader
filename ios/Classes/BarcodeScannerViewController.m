@@ -110,9 +110,10 @@
     NSString *qrCodeString = [self messageFromQRCodeImage:image];
     if (qrCodeString) {
         [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:qrCodeString];
-        [self dismissViewControllerAnimated:NO completion:nil];
     } else {
-        [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:@"NOT_QRCODE"];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"识别二维码失败" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:true completion:nil];
     }
     
     NSLog(@"----end----");
