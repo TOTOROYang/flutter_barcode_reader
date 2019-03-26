@@ -106,8 +106,32 @@
     NSLog(@"---begin---");
     NSLog(@"%@", info);
     UIImage *image = info[UIImagePickerControllerOriginalImage];
+    NSLog(@"%@",image);
+    NSString *qrCodeString = [self messageFromQRCodeImage:image];
+    if (qrCodeString) {
+        [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:qrCodeString];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"识别二维码失败" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:true completion:nil];
+    }
     
     NSLog(@"----end----");
+}
+
+- (NSString *)messageFromQRCodeImage:(UIImage *)image{
+    if (!image) {
+        return nil;
+    }
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:context options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+    CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
+    NSArray *features = [detector featuresInImage:ciImage];
+    if (features.count == 0) {
+        return nil;
+    }
+    CIQRCodeFeature *feature = features.firstObject;
+    return feature.messageString;
 }
 
 
