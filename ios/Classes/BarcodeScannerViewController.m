@@ -107,7 +107,7 @@
     NSString *qrCodeString = [self messageFromQRCodeImage:image];
     if (qrCodeString) {
         [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:qrCodeString];
-        [self dismissViewControllerAnimated:NO completion:nil];
+//        [self dismissViewControllerAnimated:NO completion:nil];
     } else {
         [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:@"NOT_QRCODE"];
     }
