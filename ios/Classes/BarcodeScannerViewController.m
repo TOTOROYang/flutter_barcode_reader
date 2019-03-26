@@ -98,7 +98,7 @@
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    [self presentViewController:picker animated:true completion:nil];
+    [self presentViewController:picker animated:NO completion:nil];
 }
 // 选择图片成功调用此方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -110,10 +110,11 @@
     NSString *qrCodeString = [self messageFromQRCodeImage:image];
     if (qrCodeString) {
         [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:qrCodeString];
+        [self dismissViewControllerAnimated:NO completion:nil];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"识别二维码失败" message:nil preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:alert animated:true completion:nil];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
     NSLog(@"----end----");
