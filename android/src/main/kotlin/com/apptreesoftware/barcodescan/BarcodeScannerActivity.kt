@@ -44,7 +44,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         // this paramter will make your HUAWEI phone works great!
         scannerView.setAspectTolerance(0.5f)
         setContentView(scannerView)
-//        actionBar.title = "二维码/条码"
+        actionBar.title = "扫描二维码"
         setCustomActionBar()
     }
 

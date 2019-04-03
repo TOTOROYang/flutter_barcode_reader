@@ -32,6 +32,6 @@ public class MyViewFinderView extends ViewFinderView {
         int bottom = getFramingRect().bottom;
         int left = getFramingRect().left;
         int right = getFramingRect().right;
-        canvas.drawText("将二维码放入框内，即可自动扫描", (left + right) / 2, bottom + 60, mTextPaint);
+        canvas.drawText("请扫码二维码关注别人", (left + right) / 2, bottom + 60, mTextPaint);
     }
 }
