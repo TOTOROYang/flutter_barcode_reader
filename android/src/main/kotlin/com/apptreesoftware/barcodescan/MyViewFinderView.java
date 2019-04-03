@@ -18,7 +18,7 @@ public class MyViewFinderView extends ViewFinderView {
         super(context);
         mTextPaint = new Paint();
         mTextPaint.setColor(0xFFf2f9ff);
-        mTextPaint.setTextSize(39);
+        mTextPaint.setTextSize(66);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
     }
 

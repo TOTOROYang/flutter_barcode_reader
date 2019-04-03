@@ -60,7 +60,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         actionBar.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000000")))
         actionBar.setDisplayHomeAsUpEnabled(true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            actionBar.setHomeAsUpIndicator(R.drawable.icon_back)
+            actionBar.setHomeAsUpIndicator(R.drawable.bg_activity_back)
         }
     }
 
@@ -77,6 +77,14 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         val item = menu.add(0,
                 TOGGLE_FLASH, 0, "相册")
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        val item = menu.add(0,
+                TOGGLE_FLASH, 0, "相册")
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        var text = TextView(this)
+        text.setTextColor(0xf2f9ff)
+        text.text = "相册"
+        text.textSize = 54f
+        menu.getItem(0).actionView = text
         return super.onCreateOptionsMenu(menu)
     }
 
