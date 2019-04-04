@@ -9,7 +9,7 @@
 #import "ScannerOverlay.h"
 
 
-@interface BarcodeScannerViewController : UIViewController
+@interface BarcodeScannerViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property(nonatomic, retain) UIView *previewView;
   @property(nonatomic, retain) ScannerOverlay *scanRect;
 @property(nonatomic, retain) MTBBarcodeScanner *scanner;
